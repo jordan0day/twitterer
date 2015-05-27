@@ -1,11 +1,16 @@
 defmodule Twitterer.Router do
   use Twitterer.Web, :router
+  use Twitterer.Plugs.Auth
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
+  end
+
+  pipeline :authenticated do
+    plug :require_user_session
   end
 
   pipeline :api do
@@ -23,6 +28,7 @@ defmodule Twitterer.Router do
 
   scope "/", Twitterer do
     pipe_through :browser # Use the default browser stack
+    pipe_through :authenticated
 
     get "/", PageController, :index
   end
