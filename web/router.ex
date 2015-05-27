@@ -12,6 +12,14 @@ defmodule Twitterer.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/oauth" do
+    pipe_through :browser
+
+    get "/", Twitterer.OauthController, :index
+    get "/redirect", Twitterer.OauthController, :twitter_redirect
+    get "/callback", Twitterer.OauthController, :twitter_callback
+  end
+
   scope "/", Twitterer do
     pipe_through :browser # Use the default browser stack
 

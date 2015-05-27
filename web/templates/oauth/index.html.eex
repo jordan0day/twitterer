@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <h2>Login to Twitter</h2>
+  <p>Please sign in to Twitter to use Twitterer</p>
+  <p>
+    <a href="<%= oauth_path(@conn, :twitter_redirect) %>">
+      <button class="btn btn-default">
+        <img src="<%= static_path(@conn, "/images/sign-in-with-twitter-link.png") %>" />
+      </button>
+    </a>
+  </p>
+</div>
