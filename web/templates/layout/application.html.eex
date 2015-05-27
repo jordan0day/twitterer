@@ -15,7 +15,13 @@
     <div class="container" role="main">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <%= if is_signed_in(@conn) do %>
+            <li>
+              <%= form_for @conn, oauth_path(@conn, :logout), [name: :logout_form, csrf_token: true, method: "post"], fn f -> %>
+                <%= submit "Log out", [class: "btn btn-danger"] %>
+              <% end %>
+            </li>
+           <% end %>
         </ul>
         <span class="logo"></span>
       </div>

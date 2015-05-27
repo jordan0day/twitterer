@@ -51,7 +51,7 @@ defmodule Twitterer.OauthController do
         |> redirect external: authenticate_url <> "?oauth_token=" <> token
 
       {result, resp} ->
-        Logger.error "Something went wrong requesting a token. Result: #{inspect result}\nResponse: #{inspect response}"
+        Logger.error "Something went wrong requesting a token. Result: #{inspect result}\nResponse: #{inspect resp}"
         conn
         |> put_flash(:error, "An error occurred signing in. Please try again.")
         |> redirect to: "/oauth"
@@ -93,11 +93,21 @@ defmodule Twitterer.OauthController do
         |> put_flash(:info, "Sign-in successful!")
         |> redirect to: "/"
       {result, resp} ->
-        Logger.error "Something went wrong retrieving an access token. Result: #{inspect result}\nResponse: #{inspect response}"
+        Logger.error "Something went wrong retrieving an access token. Result: #{inspect result}\nResponse: #{inspect resp}"
         conn
         |> put_flash(:error, "An error occurred signing in. Please try again.")
         |> redirect to: "/oauth"
     end
+  end
+
+  def logout(conn, _params) do
+    conn
+    |> delete_session(:token)
+    |> delete_session(:secret)
+    |> delete_session(:user_id)
+    |> delete_session(:screen_name)
+    |> put_flash(:info, "Logged out")
+    |> redirect to: "/oauth"
   end
 
   # Generate the OAuth Authorization header with signature, used for making

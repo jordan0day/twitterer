@@ -18,6 +18,7 @@ defmodule Twitterer.Router do
     get "/", Twitterer.OauthController, :index
     get "/redirect", Twitterer.OauthController, :twitter_redirect
     get "/callback", Twitterer.OauthController, :twitter_callback
+    post "/logout", Twitterer.OauthController, :logout
   end
 
   scope "/", Twitterer do
