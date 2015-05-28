@@ -31,6 +31,10 @@ defmodule Twitterer.Router do
     pipe_through :authenticated
 
     get "/", PageController, :index
+
+    scope "/monitor" do
+      post "/", MonitorController, :index
+    end
   end
 
   # Other scopes may use custom stacks.
