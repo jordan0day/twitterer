@@ -1,7 +1,6 @@
 here's the index!
 <%= @hashtag %>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script>app.hello();</script>
 <script>
   var user_info = {
     user_id: "<%= @user_info.user_id %>",
