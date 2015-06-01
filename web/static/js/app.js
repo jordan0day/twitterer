@@ -1,13 +1,7 @@
-import {Socket} from "phoenix"
-
-// let socket = new Socket("/ws")
-// socket.connect()
-// let chan = socket.chan("topic:subtopic", {})
-// chan.join().receive("ok", chan => {
-//   console.log("Success!")
-// })
+import { monitor_hashtag } from 'web/static/js/monitor'
 
 let App = {
+  monitor_hashtag: monitor_hashtag
 }
 
 export default App

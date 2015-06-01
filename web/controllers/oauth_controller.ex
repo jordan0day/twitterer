@@ -85,11 +85,13 @@ defmodule Twitterer.OauthController do
         # screen_name=jordan0day
 
         body = URI.decode_query(response.body)
+        user_info = %{token: body["oauth_token"],
+                      secret: body["oauth_token_secret"],
+                      user_id: body["user_id"],
+                      screen_name: body["screen_name"]}
+
         conn
-        |> put_session(:token, body["oauth_token"])
-        |> put_session(:secret, body["oauth_token_secret"])
-        |> put_session(:user_id, body["user_id"])
-        |> put_session(:screen_name, body["screen_name"])
+        |> put_session(:user_info, user_info)
         |> put_flash(:info, "Sign-in successful!")
         |> redirect to: "/"
       {result, resp} ->
@@ -102,10 +104,7 @@ defmodule Twitterer.OauthController do
 
   def logout(conn, _params) do
     conn
-    |> delete_session(:token)
-    |> delete_session(:secret)
-    |> delete_session(:user_id)
-    |> delete_session(:screen_name)
+    |> delete_session(:user_info)
     |> put_flash(:info, "Logged out")
     |> redirect to: "/oauth"
   end

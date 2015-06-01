@@ -3,7 +3,7 @@
   <p class="lead">Start by entering a hashtag to monitor</p>
   <p>
     <%= form_for @conn, "/monitor", [name: :start_form, csrf_token: true, method: "post"], fn f -> %>
-      <%= text_input f, :hastag, placeholder: "#puppies", style: "padding: 5px;" %>
+      <%= text_input f, :hashtag, placeholder: "#puppies", style: "padding: 5px;" %>
       <%= submit "Twitterer-ize!", [class: "btn btn-primary"] %>
     <% end %>
   </p>

@@ -4,7 +4,7 @@ defmodule Twitterer.Plugs.Auth do
       import Plug.Conn
 
       def require_user_session(conn, opts) do
-        if get_session(conn, :user_id) == nil do
+        if get_session(conn, :user_info) == nil do
           conn
             |> Phoenix.Controller.put_flash(:error, "Login required")
             |> redirect(to: "/oauth")

@@ -1,1 +1,12 @@
 here's the index!
+<%= @hashtag %>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>app.hello();</script>
+<script>
+  var user_info = {
+    user_id: "<%= @user_info.user_id %>",
+    screen_name: "<%= @user_info.screen_name %>",
+    token: "<%= @user_info.token %>",
+    secret: "<%= @user_info.secret %>"};
+  app.monitor_hashtag("<%= @hashtag %>", user_info);
+</script>

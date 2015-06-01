@@ -4,6 +4,6 @@ defmodule Twitterer.LayoutView do
   import Plug.Conn
 
   def is_signed_in(conn) do
-    get_session(conn, :user_id) != nil
+    get_session(conn, :user_info) != nil
   end
 end

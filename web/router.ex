@@ -37,6 +37,10 @@ defmodule Twitterer.Router do
     end
   end
 
+  socket "/monitor/ws", Twitterer do
+    channel "monitor:*", MonitorChannel
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Twitterer do
   #   pipe_through :api

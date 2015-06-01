@@ -36,6 +36,8 @@ defmodule Twitterer.Mixfile do
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
      {:oauther, "~> 1.0"},
-     {:httpoison, "~> 0.6"}]
+     {:httpoison, "~> 0.6"},
+     {:extwitter, "~> 0.4"},
+     {:oauth, github: "tim/erlang-oauth"}]
   end
 end

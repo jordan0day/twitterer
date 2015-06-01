@@ -15,9 +15,8 @@ defmodule Twitterer.MonitorController do
 
   POST /monitor
   """
-  def index(conn, %{"start_form" => %{"hashtag" => hashtag}}) when is_binary(hashtag) and length(hashtag) > 1 do
-    
-    render conn, "index.html"
+  def index(conn, %{"start_form" => %{"hashtag" => hashtag}} = _params) when is_binary(hashtag) and byte_size(hashtag) > 1 do
+    render conn, "index.html", hashtag: hashtag, user_info: get_session(conn, :user_info)
   end
 
   # This action will only match if the start_form form with a "hashtag" element

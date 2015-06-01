@@ -12,6 +12,8 @@
   </head>
 
   <body>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script>var app = require("web/static/js/app")</script>
     <div class="container" role="main">
       <div class="header">
         <ul class="nav nav-pills pull-right">
@@ -32,7 +34,6 @@
       <%= @inner %>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script>require("web/static/js/app")</script>
+
   </body>
 </html>
