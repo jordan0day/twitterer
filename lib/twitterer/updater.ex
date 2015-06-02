@@ -35,7 +35,7 @@ defmodule Twitterer.Updater do
 
     receive do
     after 5000 ->
-      results = ExTwitter.search(URI.encode(current_hashtag), [count: 5])
+      results = ExTwitter.search(URI.encode("##{current_hashtag}"), [count: 5])
 
       Twitterer.Search.search_results(search_pid, current_hashtag, results)
     end

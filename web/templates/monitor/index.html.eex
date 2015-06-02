@@ -1,5 +1,10 @@
-here's the index!
-<%= @hashtag %>
+<p style="display: block; text-align: center;">
+  <label for="add_hashtag">Watch another hashtag:</label>
+  <input id="hashtag_input" placeholder="#puppies" type="text" style="padding: 5px;">
+  <button class="btn btn-primary" id="hashtag_btn">Twitterer-ize</button>
+</p>
+<div id="tweets">
+</div>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
   var user_info = {
@@ -7,5 +12,5 @@ here's the index!
     screen_name: "<%= @user_info.screen_name %>",
     token: "<%= @user_info.token %>",
     secret: "<%= @user_info.secret %>"};
-  app.monitor_hashtag("<%= @hashtag %>", user_info);
+  app.monitor_init("<%= @hashtag %>", user_info);
 </script>

@@ -16,6 +16,11 @@ defmodule Twitterer.MonitorController do
   POST /monitor
   """
   def index(conn, %{"start_form" => %{"hashtag" => hashtag}} = _params) when is_binary(hashtag) and byte_size(hashtag) > 1 do
+    # clean up any whitespace, and remove the pound symbol
+    hashtag = hashtag
+              |> String.strip
+              |> String.lstrip(?#)
+
     render conn, "index.html", hashtag: hashtag, user_info: get_session(conn, :user_info)
   end
 

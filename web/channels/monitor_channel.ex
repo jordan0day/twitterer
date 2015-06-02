@@ -19,16 +19,10 @@ defmodule Twitterer.MonitorChannel do
     end
   end
 
-  def handle_in(:hashtag_updated, %{hashtag: hashtag, results: results}, socket) do
-    IO.puts "Pushing new results for #{inspect hashtag}"
+  def handle_info({:hashtag_updated, hashtag, results}, socket) do
+    push(socket, "hashtag_updated", %{hashtag: hashtag, results: results})
 
     {:noreply, socket}
-  end
-
-  def handle_info({:hashtag_updated, hashtag, results}, state) do
-    IO.puts "in the handle info for hashtag: #{inspect hashtag}"
-
-    {:noreply, state}
   end
 
   def terminate(message, socket) do

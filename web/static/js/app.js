@@ -1,7 +1,7 @@
-import { monitor_hashtag } from 'web/static/js/monitor'
+import { init } from 'web/static/js/monitor'
 
 let App = {
-  monitor_hashtag: monitor_hashtag
+  monitor_init: init
 }
 
 export default App
